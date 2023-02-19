@@ -9,7 +9,13 @@ const app = express();
 const Gtin = require('./models/Gtin');
 // const bcrypt = require('bcrypt');
 // const jwt = require('jsonwebtoken');
-app.use(express.json());
+
+//Criar api com grande limite de upload
+app.use(express.json({ limit: '50mb' }));
+
+
+
+//app.use(express.json());
 
 // async function isAuthorized(req, res, next) {
 //     try {
@@ -136,8 +142,7 @@ app.get("/busca", async (request, response) => {
 
 app.listen(3006, () => {
     console.log("Servidor rodando na porta 3006");
-}
-);
+});
 
 
 
