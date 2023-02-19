@@ -10,7 +10,7 @@ const Locate = require('./models/Locate');
 app.use(express.json({ limit: '50mb' }));
 //Criar a rota de cadastramento de produto pra locação
 app.post("/cadastro", async (request, response) => {
-    const { nome, fotos, marca, modelo, ano, anoModelo, cor, combustivel, portas, lugares, cambio, motor, carroceria, km, descricao, categoria, seguro, calcao, cancelFree, valorDiaria, promocional, tempoPromocao, dono } = request.body;
+    const { nome, fotos, marca, modelo, ano, anoModelo, cor, combustivel, portas, lugares, cambio, motor, carroceria, km, descricao, categoria, seguro, calcao, cancelFree, datasDisponiveis, valorDiaria, promocional, tempoPromocao, dono } = request.body;
     //Criar um vetor vazio pra armazenar as fotos
     var nomeFotos = [];
     //descriptografar a imagem base64
@@ -67,6 +67,7 @@ app.post("/cadastro", async (request, response) => {
             seguro: seguro,
             calcao: calcao,
             cancelFree: cancelFree,
+            datasDisponiveis: datasDisponiveis,
             valorDiaria: valorDiaria,
             promocional: promocional,
             tempoPromocao: tempoPromocao,
