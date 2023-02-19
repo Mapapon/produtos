@@ -18,17 +18,17 @@ app.post("/cadastro", async (request, response) => {
     //Fazer um for que descriptografe os n itens do array
     for (x = 0; x < fotos.length; x++) {
         try {
-            var buffer = await new Buffer.from(fotos[$x].split(',')[1], 'base64');
+            var buffer = await new Buffer.from(fotos[x].split(',')[1], 'base64');
             //gerar um número de 6 dígitos
             var number = Math.floor(Math.random() * 1000000);
             //Achar a extensão do arquivo
-            var extensao = await fotos[$x].split(',')[0].split('/')[1].split(';')[0];
+            var extensao = await fotos[x].split(',')[0].split('/')[1].split(';')[0];
 
             var fileName = `${number}${new Date().getTime()}.${extensao}`;
             var filePath = path.join(__dirname, 'locations', fileName);
             //Salvar o arquivo na pasta img
             fs.writeFileSync(filePath, buffer);
-            nomeFotos[$x] = fileName;
+            nomeFotos[x] = fileName;
 
         }
         catch (error) {
@@ -36,9 +36,9 @@ app.post("/cadastro", async (request, response) => {
         }
     }
     //Percorrer o nomeFotos e adicionar "" em cada item
-    for ($x = 0; $x < 6; $x++) {
-        if (nomeFotos[$x] == null) {
-            nomeFotos[$x] = "";
+    for (x = 0; x < 6; x++) {
+        if (nomeFotos[x] == null) {
+            nomeFotos[x] = "";
         }
     }
     try {
@@ -90,16 +90,16 @@ app.put("/editar", async (request, response) => {
     //"fotos": ["base64","base64","base64","base64", "base64", "base64"]
     //Fazer um for que descriptografe os n itens do array
     for (x = 0; x < fotos.length; x++) {
-        var buffer = await new Buffer.from(fotos[$x].split(',')[1], 'base64');
+        var buffer = await new Buffer.from(fotos[x].split(',')[1], 'base64');
         //gerar um número de 6 dígitos
         var number = Math.floor(Math.random() * 1000000);
         //Achar a extensão do arquivo
-        var extensao = await fotos[$x].split(',')[0].split('/')[1].split(';')[0];
+        var extensao = await fotos[x].split(',')[0].split('/')[1].split(';')[0];
         var fileName = `${number}${new Date().getTime()}.${extensao}`;
         var filePath = path.join(__dirname, 'locations', fileName);
         //Salvar o arquivo na pasta locations
         fs.writeFileSync(filePath, buffer);
-        nomeFotos[$x] = fileName;
+        nomeFotos[x] = fileName;
     }
     //Verificar quais das variáveis estão nulas
     //Se não estiver nula, alterar
