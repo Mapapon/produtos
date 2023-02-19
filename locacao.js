@@ -16,7 +16,7 @@ app.post("/cadastro", async (request, response) => {
     //descriptografar a imagem base64
     //"fotos": ["base64","base64","base64","base64", "base64", "base64"]
     //Fazer um for que descriptografe os n itens do array
-    for ($x = 0; $x < sizeof(fotos); $x++) {
+    for (x = 0; x < fotos.length; x++) {
         try {
             var buffer = await new Buffer.from(fotos[$x].split(',')[1], 'base64');
             //gerar um número de 6 dígitos
@@ -89,7 +89,7 @@ app.put("/editar", async (request, response) => {
     //descriptografar a imagem base64
     //"fotos": ["base64","base64","base64","base64", "base64", "base64"]
     //Fazer um for que descriptografe os n itens do array
-    for ($x = 0; $x < sizeof(fotos); $x++) {
+    for (x = 0; x < fotos.length; x++) {
         var buffer = await new Buffer.from(fotos[$x].split(',')[1], 'base64');
         //gerar um número de 6 dígitos
         var number = Math.floor(Math.random() * 1000000);
