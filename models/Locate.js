@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('./db.js');
+const db = require('../../prototipo/autenticacao/models/db.js');
 
 const Locate = db.define('locacao', {
     id: {
